@@ -1,0 +1,22 @@
+{% extends "base.html.twig" %}
+{% block title %} Accueil{% endblock %}
+{% block body %}
+  <div class="container mt-4">
+   {% for message in app.flashes('success2') %}
+    <div class='alert alert-warning mt-4'>
+        {{message}}
+    </div>
+    {% endfor %}
+    <div class="jumbotron">
+      <h1 class="display-4">Bienvenue sur Biblitohèque</h1>
+        <p class="lead">Bibliotheque est une application qui recense des livres </p>
+          <hr class="my-4">
+        <p>Pour commencer, rendez-vous sur la page d'inscription pour 
+           utiliser l'application ou connecter vous.</p>
+      <a class="btn btn-primary btn-lgz me-4" href="/register" role="button">Inscription</a>
+      <a class="btn btn-info btn-lgz ms-4" href="/login" role="button">Se connecter</a>
+    </div>
+  </div>
+
+
+{% endblock body %}
