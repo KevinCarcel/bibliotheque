@@ -2,15 +2,16 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Editeur;
-use App\Entity\Auteur;
+use App\Entity\Genre;
 use App\Entity\Livre;
-use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
-use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
-use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
+use App\Entity\Auteur;
+use App\Entity\Editeur;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
+use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
 
 class DashboardController extends AbstractDashboardController
 {
@@ -55,5 +56,6 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Auteur', 'fas fa-map-marker-alt', Auteur::class);
         yield MenuItem::linkToCrud('Editeur', 'fas fa-map-marker-alt', Editeur::class);
         yield MenuItem::linkToCrud('Livre', 'fas fa-map-marker-alt', Livre::class);
+        yield MenuItem::linkToCrud('Genre','fas fa-map-marker-alt', Genre::class);
     }
 }

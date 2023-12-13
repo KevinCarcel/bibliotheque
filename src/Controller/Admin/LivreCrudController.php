@@ -25,7 +25,9 @@ class LivreCrudController extends AbstractCrudController
             yield AssociationField::new('auteur')->setCrudController(AuteurCrudController::class),
             yield AssociationField::new('editeurs')->setCrudController(EditeurCrudController::class),
             yield MoneyField::new("prix")->setCurrency('EUR'),
-            yield IntegerField::new("quantite")
+            yield IntegerField::new("quantite"),
+            yield AssociationField::new("genre_id")->setCrudController(GenreCrudController::class),
+            yield TextField::new("resume"),
         ];
     }
 

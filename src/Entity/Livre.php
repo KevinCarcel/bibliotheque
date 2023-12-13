@@ -42,6 +42,28 @@ class Livre
     #[Assert\NotNull]
     private ?int $quantite = null;
 
+    #[ORM\Column(type:'string')]
+    private ?string $couverture = null;
+
+    #[ORM\ManyToOne(inversedBy: 'livres')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Genre $genre_id = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $resume = null;
+
+    public function getcouverture(): string
+    {
+        return $this->couverture;
+    }
+
+    public function setcouverture(string $couverture): self
+    {
+        $this->couverture = $couverture;
+
+        return $this;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -103,6 +125,30 @@ class Livre
     public function setQuantite(int $quantite): static
     {
         $this->quantite = $quantite;
+
+        return $this;
+    }
+
+    public function getGenreId(): ?Genre
+    {
+        return $this->genre_id;
+    }
+
+    public function setGenreId(?Genre $genre_id): static
+    {
+        $this->genre_id = $genre_id;
+
+        return $this;
+    }
+
+    public function getResume(): ?string
+    {
+        return $this->resume;
+    }
+
+    public function setResume(?string $resume): static
+    {
+        $this->resume = $resume;
 
         return $this;
     }

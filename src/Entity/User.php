@@ -42,6 +42,26 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 50)]
     private ?string $pseudo = null;
 
+    #[ORM\Column(type:'string')]
+    private ?string $photoProfilFileName = null;
+
+    #[ORM\Column(length: 50)]
+    private ?string $nom = null;
+
+    #[ORM\Column(length: 50)]
+    private ?string $prenom = null;
+
+    public function getphotoProfilFileName(): string
+    {
+        return $this->photoProfilFileName;
+    }
+
+    public function setphotoProfilFilename(string $photoProfilFileName): self
+    {
+        $this->photoProfilFileName = $photoProfilFileName;
+
+        return $this;
+    }
     public function getId(): ?int
     {
         return $this->id;
@@ -147,6 +167,30 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setPseudo(string $pseudo): static
     {
         $this->pseudo = $pseudo;
+
+        return $this;
+    }
+
+    public function getNom(): ?string
+    {
+        return $this->nom;
+    }
+
+    public function setNom(string $nom): static
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    public function getPrenom(): ?string
+    {
+        return $this->prenom;
+    }
+
+    public function setPrenom(string $prenom): static
+    {
+        $this->prenom = $prenom;
 
         return $this;
     }

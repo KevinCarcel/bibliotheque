@@ -18,10 +18,12 @@
           {% if app.user %}
           
           <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle show" data-bs-toggle="dropdown" href="/" role="button" aria-haspopup="true" aria-expanded="true">{{app.user.pseudo}}</a>
-          <div class="dropdown-menu show" data-bs-popper="static">
-            <a class="dropdown-item" href="/utilisateur/edition/{{app.user.id}}">Modifier mon pseudo</a>
-            <a class="dropdown-item" href="#">Modifier mon mot de passe</a>
+          <a class="nav-link active dropdown-toggle  photoHead" data-bs-toggle="dropdown" href="/" role="button" aria-haspopup="true" aria-expanded="false">{{app.user.pseudo}}<img src="/uploads/photos/{{app.user.photoProfilFileName}}" class="dimPhoto" alt="photoProfil"> </a>
+          <div class="dropdown-menu " data-bs-popper="static">
+          <a class="dropdown-item" href="/utilisateur/{{app.user.id}}">Voir mon profil</a>
+          <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="/utilisateur/edition/{{app.user.id}}">Modifier mon profil</a>
+            <a class="dropdown-item" href="/utilisateur/edition-mot-de-passe/{{app.user.id}}">Modifier mon mot de passe</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="{{path('app_logout')}}">Se Déconnecter</a>
           </div>
@@ -38,9 +40,14 @@
           </a>
           </li>
         {% endif %}
+
         
           
       </ul>
+      <form class="d-flex">
+        <input class="form-control me-sm-2" type="search" placeholder="Search">
+        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+      </form>
     </div>
   </div>
 </nav>

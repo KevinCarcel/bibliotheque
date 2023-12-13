@@ -29,6 +29,34 @@ class UserType extends AbstractType
                         new Assert\Length(['min'=>2,'max'=>50])
                         ]
         ])
+        ->add('nom',TextType::class,[
+            'attr'=> [
+                'class'=> 'form-control',
+                'minLenght'=> '2',
+                'maxLenght'=> '50'
+                ],
+                'label'=> 'Nom',
+                'label_attr'=> [
+                    'class'=> 'form-label',
+                    ],
+                    'constraints'=> [
+                        new Assert\Length(['min'=>2,'max'=>50])
+                        ]
+        ])
+        ->add('prenom',TextType::class,[
+            'attr'=> [
+                'class'=> 'form-control',
+                'minLenght'=> '2',
+                'maxLenght'=> '50'
+                ],
+                'label'=> 'Prenom',
+                'label_attr'=> [
+                    'class'=> 'form-label',
+                    ],
+                    'constraints'=> [
+                        new Assert\Length(['min'=>2,'max'=>50])
+                        ]
+        ])
         ->add('submit', SubmitType::class,[
             'attr'=>[
                 'class'=> 'btn btn-primary mt-4'

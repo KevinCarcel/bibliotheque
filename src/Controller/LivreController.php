@@ -10,6 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\DependencyInjection\Attribute\Autowire;
 
 #[Route('/livre')]
 class LivreController extends AbstractController
@@ -23,13 +24,19 @@ class LivreController extends AbstractController
     }
 
     #[Route('/new', name: 'app_livre_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, EntityManagerInterface $entityManager, #[Autowire('%photo_dir%')] string $photoDir,): Response
     {
         $livre = new Livre();
         $form = $this->createForm(LivreType::class, $livre);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            if ($couverture = $form['couverture']->getData()) {
+                $filename = bin2hex(random_bytes(6)).'.'.$couverture->guessExtension();
+                $couverture->move($photoDir, $filename);
+                $livre->setcouverture($filename);
+            }
+
             $entityManager->persist($livre);
             $entityManager->flush();
 

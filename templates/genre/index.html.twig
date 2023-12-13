@@ -1,25 +1,26 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Auteur index{% endblock %}
+{% block title %}Genre index{% endblock %}
 
 {% block body %}
-    <h1>Auteur index</h1>
+    <h1>Genre index</h1>
 
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Name</th>
+                <th>Type</th>
                 <th>actions</th>
             </tr>
         </thead>
         <tbody>
-        {% for auteur in auteurs %}
+        {% for genre in genres %}
             <tr>
-                <td>{{ auteur.id }}</td>
-                <td>{{ auteur.name }}</td>
+                <td>{{ genre.id }}</td>
+                <td>{{ genre.type }}</td>
                 <td>
-                    <a href="{{ path('app_auteur_show', {'id': auteur.id}) }}">show</a>
+                    <a href="{{ path('app_genre_show', {'id': genre.id}) }}">show</a>
+                    <a href="{{ path('app_genre_edit', {'id': genre.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
@@ -30,5 +31,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_auteur_new') }}">Create new</a>
+    <a href="{{ path('app_genre_new') }}">Create new</a>
 {% endblock %}

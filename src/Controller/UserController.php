@@ -14,6 +14,16 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class UserController extends AbstractController
 {
+    #[Route('/utilisateur/{id}', 'app_user_show')]
+    public function index()
+    {
+        return $this->render('user/index.html.twig',[
+            'controller_name' => 'UserController',
+        ]);
+    }
+
+
+
     #[Route('/utilisateur/edition/{id}', name: 'app_user_edit')]
     public function edit(UserRepository $userRepository, int $id,Request $request, EntityManagerInterface $manager,UserPasswordHasherInterface $hasher): Response
     {
